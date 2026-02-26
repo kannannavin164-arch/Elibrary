@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Library - Global eLibrary">
+    <title>My Library - Global eLibrary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-book-open"></i> Global eLibrary
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="my-library.html">My Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="authLink" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="fw-bold">My Library</h1>
+            <p class="text-muted">Your purchased books ready to read</p>
+        </div>
+    </div>
+
+    <main class="container py-5">
+        <!-- Continue Reading / Recent -->
+        <section id="continueReading" class="mb-4" style="display:none;">
+            <h5>Continue Reading</h5>
+            <div id="continueStrip" class="d-flex gap-3 overflow-auto py-2"></div>
+        </section>
+
+        <section id="librarySection">
+            <div id="libraryGrid" class="books-grid"></div>
+            <div id="libraryEmpty" class="text-center py-5" style="display:none;">
+                <div style="font-size:3rem">📖</div>
+                <h4 class="mt-3">You haven't purchased any books yet.</h4>
+                <p class="text-muted">Browse our store to find your next read.</p>
+                <a href="browse.html" class="btn btn-primary mt-3">Browse Books</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Read Modal -->
+    <div class="modal fade" id="readModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="readModalTitle">Read Preview</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center" id="readModalCover"></div>
+                        <div class="col-md-8">
+                            <p id="readModalAuthor" class="text-muted"></p>
+                            <p id="readModalDesc"></p>
+                            <div class="my-3">
+                                <div class="progress" style="height:14px;">
+                                    <div id="readProgressBar" class="progress-bar" role="progressbar" style="width:0%">0%</div>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button id="continueReadingBtn" class="btn btn-primary">Continue Reading</button>
+                                <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-5">
+        <div class="container text-center">
+            <p class="text-muted">&copy; 2024 Global eLibrary</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            if (typeof loadMyLibraryPage === 'function') loadMyLibraryPage();
+        });
+    </script>
+</body>
+</html>

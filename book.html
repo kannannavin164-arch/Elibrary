@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book Details - Global eLibrary">
+    <title>Book Details - Global eLibrary</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-book-open"></i> Global eLibrary
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                            <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="authLink" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Book Details Container -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <img id="bookCover" src="images/book-default.jpg" class="card-img-top" alt="Book Cover">
+                    <div class="card-body">
+                        <h5 id="bookPrice" class="card-title text-accent fw-bold">$0.00</h5>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <h1 id="bookTitle" class="mb-2">Loading...</h1>
+                <p id="bookAuthor" class="text-muted">Author</p>
+                
+                <div class="mb-3">
+                    <div class="rating">
+                        <span id="bookRating" class="text-warning">★★★★★</span>
+                        <span class="ms-2" id="bookReviews">(0 reviews)</span>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <h3>Description</h3>
+                    <p id="bookDescription">Loading description...</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h3>Book Details</h3>
+                    <ul class="list-unstyled">
+                        <li><strong>ISBN:</strong> <span id="bookISBN">N/A</span></li>
+                        <li><strong>Publisher:</strong> <span id="bookPublisher">N/A</span></li>
+                        <li><strong>Publication Date:</strong> <span id="bookPublishedDate">N/A</span></li>
+                        <li><strong>Pages:</strong> <span id="bookPages">N/A</span></li>
+                        <li><strong>Language:</strong> <span id="bookLanguage">English</span></li>
+                        <li><strong>Category:</strong> <span id="bookCategory">General</span></li>
+                    </ul>
+                </div>
+                
+                <div class="mb-4">
+                    <button id="addToCartBtn" class="btn btn-primary btn-lg me-2">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2024 Global eLibrary. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

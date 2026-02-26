@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="User Dashboard - Global eLibrary">
+    <title>Dashboard - Global eLibrary</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-book-open"></i> Global eLibrary
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-library.html">My Library</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                            <span class="cart-badge" id="cartBadge" style="display: none;">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="authLink" href="login.html">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Container -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user fa-3x text-primary mb-3"></i>
+                        <h5 class="card-title">Profile</h5>
+                        <p class="card-text text-muted">Manage your account</p>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#profileModal">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-book fa-3x text-success mb-3"></i>
+                        <h5 class="card-title">My Books</h5>
+                        <p class="card-text text-muted" id="booksCount">0 Books</p>
+                        <a href="#myBooks" class="btn btn-sm btn-success">View Books</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-receipt fa-3x text-info mb-3"></i>
+                        <h5 class="card-title">Orders</h5>
+                        <p class="card-text text-muted" id="ordersCount">0 Orders</p>
+                        <a href="#ordersSection" class="btn btn-sm btn-info">View Orders</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-3 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-cog fa-3x text-warning mb-3"></i>
+                        <h5 class="card-title">Settings</h5>
+                        <p class="card-text text-muted">Manage preferences</p>
+                        <button class="btn btn-sm btn-warning" data-bs-toggle="modal" data-bs-target="#settingsModal">Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- My Books Section -->
+        <section id="myBooks" class="mb-5">
+            <h2 class="mb-4">My Books</h2>
+            <div id="myBooksContainer" class="row">
+                <div class="col-12">
+                    <p class="text-muted">You haven't purchased any books yet.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section id="ordersSection" class="mb-5">
+            <h2 class="mb-4">Purchase History</h2>
+            <div id="ordersContainer" class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Date</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                        <tr>
+                            <td colspan="5" class="text-center text-muted">No orders yet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Logout Button -->
+        <div class="text-center">
+            <button id="logoutBtn" class="btn btn-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Profile</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="profileForm">
+                        <div class="mb-3">
+                            <label for="userName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="userName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="userEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="userPhone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="userPhone">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal fade" id="settingsModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Settings</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="emailNotifications">
+                        <label class="form-check-label" for="emailNotifications">
+                            Email Notifications
+                        </label>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="darkMode">
+                        <label class="form-check-label" for="darkMode">
+                            Dark Mode
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" type="button">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+            <p>&copy; 2024 Global eLibrary. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>

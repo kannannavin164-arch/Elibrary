@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shopping Cart - Global eLibrary">
+    <title>Shopping Cart - Global eLibrary</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fas fa-book-open"></i> Global eLibrary
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="cart.html">
+                            <i class="fas fa-shopping-cart"></i> Cart
+                            <span class="cart-badge" id="cartBadge">0</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="authLink" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-theme-toggle" id="themeToggle">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1 class="fw-bold">Shopping Cart</h1>
+            <p class="text-muted">Review your selected books</p>
+        </div>
+    </div>
+
+    <div class="container py-5">
+        <div class="row">
+            <!-- Cart Items -->
+            <div class="col-lg-8 mb-4">
+                <div id="cartMessage" class="alert alert-info text-center py-5" style="display: none;">
+                    <i class="fas fa-shopping-cart fa-3x mb-3"></i>
+                    <h5>Your cart is empty</h5>
+                    <p class="text-muted">Start adding books to your cart!</p>
+                    <a href="browse.html" class="btn btn-primary mt-3">
+                        <i class="fas fa-search"></i> Browse Books
+                    </a>
+                </div>
+
+                <div id="cartItemsContainer">
+                    <!-- Cart items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="col-lg-4">
+                <div class="card sticky-top" style="top: 100px;">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0"><i class="fas fa-receipt"></i> Order Summary</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Summary Details -->
+                        <div class="mb-3 pb-3 border-bottom">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Shipping:</span>
+                                <span>FREE</span>
+                            </div>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>Tax (10%):</span>
+                                <span id="tax">$0.00</span>
+                            </div>
+                        </div>
+
+                        <!-- Total -->
+                        <div class="d-flex justify-content-between mb-4">
+                            <h5 class="fw-bold">Total:</h5>
+                            <h5 class="fw-bold text-accent" id="totalPrice">$0.00</h5>
+                        </div>
+
+                        <!-- Checkout Button -->
+                        <button id="checkoutBtn" class="btn btn-primary btn-lg w-100 fw-bold mb-2">
+                            <i class="fas fa-credit-card"></i> Proceed to Checkout
+                        </button>
+                        <a href="browse.html" class="btn btn-outline-secondary btn-lg w-100">
+                            <i class="fas fa-arrow-left"></i> Continue Shopping
+                        </a>
+
+                        <!-- Promo Code -->
+                        <div class="mt-4 pt-3 border-top">
+                            <small class="text-muted">Promo Code</small>
+                            <div class="input-group mt-2">
+                                <input type="text" class="form-control" id="promoCode" placeholder="Enter code">
+                                <button class="btn btn-outline-secondary" type="button" id="applyPromo">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recommended Books -->
+    <div class="bg-light py-5">
+        <div class="container">
+            <h3 class="fw-bold mb-4">Recommended for You</h3>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4" id="recommendedBooks">
+                <!-- Recommended books will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-5 border-top">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">
+                        <i class="fas fa-book-open"></i> Global eLibrary
+                    </h5>
+                    <p class="text-muted">Your gateway to millions of books worldwide.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-bold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-decoration-none">Home</a></li>
+                        <li><a href="browse.html" class="text-decoration-none">Browse</a></li>
+                        <li><a href="#" class="text-decoration-none">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-bold mb-3">Follow</h6>
+                    <div class="social-links">
+                        <a href="#" class="me-3"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center text-muted">
+                <p>&copy; 2024 Global eLibrary. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div class="toast-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
